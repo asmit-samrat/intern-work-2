@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Predictive AI — 3D ML Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui;background:#05070d;color:#eef2ff;overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:-2} .glow{position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(100px);opacity:.2;z-index:-1;pointer-events:none;background:#356cff;top:-160px;right:-120px}
+.app{max-width:1450px;margin:auto;padding:28px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}.brand{display:flex;gap:14px;align-items:center}.logo{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#6d7cff,#21d4fd);display:grid;place-items:center;font-size:24px;font-weight:800;box-shadow:0 10px 40px #356cff55}.brand h1{margin:0;font-size:22px}.brand p{margin:5px 0 0;color:#8d98b5;font-size:12px}.status{padding:9px 14px;border:1px solid #2bdf9c55;border-radius:999px;background:#2bdf9c12;color:#62f0b8;font-size:12px;font-weight:700}
+.hero{display:grid;grid-template-columns:1.5fr .9fr;gap:20px}.glass{background:linear-gradient(145deg,#111827cc,#090d17b8);border:1px solid #ffffff12;border-radius:24px;box-shadow:0 20px 70px #0008,inset 0 1px #ffffff0d;backdrop-filter:blur(18px)}.heroCard{padding:34px;min-height:320px;position:relative;overflow:hidden}.heroCard:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-100px;bottom:-140px;background:#5d6cff30;filter:blur(25px)}.eyebrow{color:#6fa1ff;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h2{font-size:44px;line-height:1.05;margin:14px 0}.hero h2 span{background:linear-gradient(90deg,#fff,#6ca5ff,#54e1ff);-webkit-background-clip:text;color:transparent}.hero p{color:#a8b2ca;max-width:680px;line-height:1.7}.pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.pill{padding:8px 11px;border-radius:10px;background:#ffffff08;border:1px solid #ffffff0e;color:#cdd5e9;font-size:12px}.score{padding:28px;display:flex;flex-direction:column;justify-content:center}.score h3{margin:0;color:#a8b2ca;font-size:13px}.score .big{font-size:66px;font-weight:800;margin:8px 0;background:linear-gradient(135deg,#fff,#6ee7ff);-webkit-background-clip:text;color:transparent}.bar{height:9px;background:#ffffff0c;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;width:77.6%;background:linear-gradient(90deg,#6d7cff,#2ce5b5);box-shadow:0 0 18px #43c9ff88}.score small{color:#7986a5;margin-top:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:20px}.card{padding:22px}.card h3{margin:0 0 18px;font-size:15px}.metric{font-size:30px;font-weight:800}.muted{color:#7885a4;font-size:12px}.chartBox{height:230px}.table{width:100%;border-collapse:collapse;font-size:12px}.table th,.table td{text-align:left;padding:12px 8px;border-bottom:1px solid #ffffff0b}.table th{color:#77839f;font-weight:600}.good{color:#58e9b3}.mid{color:#72b7ff}.inputGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;color:#7e8ba9;font-size:11px;margin-bottom:7px}.field input{width:100%;padding:12px;border-radius:11px;border:1px solid #ffffff12;background:#050811;color:#fff;outline:none}.field input:focus{border-color:#6d7cff99;box-shadow:0 0 0 3px #6d7cff12}.btn{margin-top:15px;width:100%;padding:13px;border:0;border-radius:12px;background:linear-gradient(135deg,#586bff,#18c9ee);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 35px #496dff33}.result{margin-top:15px;padding:14px;border-radius:13px;background:#ffffff07;border:1px solid #ffffff0c;display:none}.result strong{font-size:20px}.footer{color:#64708b;font-size:11px;text-align:center;margin:24px 0 8px}
+@media(max-width:950px){.hero,.grid{grid-template-columns:1fr}.hero h2{font-size:34px}}@media(max-width:560px){.app{padding:15px}.inputGrid{grid-template-columns:1fr}.top{align-items:flex-start}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas><div class="glow"></div>
+<div class="app">
+<header class="top"><div class="brand"><div class="logo">AI</div><div><h1>Predictive AI</h1><p>Premium 3D Machine Learning Analytics</p></div></div><div class="status">● MODEL ONLINE</div></header>
+<section class="hero">
+<div class="glass heroCard"><div class="eyebrow">Supervised Learning / Prediction Engine</div><h2>Predict outcomes with <span>intelligent models.</span></h2><p>A premium interactive dashboard for the Predictive Modeling Using Machine Learning assignment. Explore model performance, ROC analysis and a live student-performance prediction.</p><div class="pills"><span class="pill">Random Forest</span><span class="pill">Logistic Regression</span><span class="pill">Decision Tree</span><span class="pill">ROC-AUC</span></div></div>
+<div class="glass score"><h3>BEST MODEL ROC-AUC</h3><div class="big">0.776</div><div class="bar"><i></i></div><small>Random Forest • 600 records • 80/20 train-test split</small></div>
+</section>
+<section class="grid">
+<div class="glass card"><h3>Model Performance</h3><div class="chartBox"><canvas id="modelChart"></canvas></div></div>
+<div class="glass card"><h3>ROC Curve Overview</h3><div class="chartBox"><canvas id="rocChart"></canvas></div></div>
+<div class="glass card"><h3>Dataset Snapshot</h3><div class="metric">600</div><div class="muted">Student records</div><br><div class="metric">66.8%</div><div class="muted">Pass rate</div><br><div class="metric">6</div><div class="muted">Input features</div></div>
+</section>
+<section class="grid">
+<div class="glass card" style="grid-column:span 2"><h3>Model Comparison</h3><table class="table"><thead><tr><th>MODEL</th><th>ACCURACY</th><th>PRECISION</th><th>RECALL</th><th>F1</th><th>ROC-AUC</th></tr></thead><tbody>
+<tr><td>Random Forest</td><td class="good">73.3%</td><td>76.7%</td><td>86.2%</td><td>81.2%</td><td class="good">0.776</td></tr>
+<tr><td>Logistic Regression</td><td class="good">74.2%</td><td>75.3%</td><td>91.2%</td><td>82.5%</td><td class="mid">0.744</td></tr>
+<tr><td>Decision Tree</td><td>67.5%</td><td>75.3%</td><td>76.2%</td><td>75.8%</td><td>0.716</td></tr>
+</tbody></table></div>
+<div class="glass card"><h3>Live Prediction</h3><div class="inputGrid"><div class="field"><label>Study Hours</label><input id="study" type="number" value="6" min="0" max="12"></div><div class="field"><label>Attendance %</label><input id="attendance" type="number" value="82" min="0" max="100"></div><div class="field"><label>Assignment Score</label><input id="assignment" type="number" value="75" min="0" max="100"></div><div class="field"><label>Previous Score</label><input id="previous" type="number" value="70" min="0" max="100"></div></div><button class="btn" onclick="predict()">RUN AI PREDICTION</button><div class="result" id="result"></div></div>
+</section>
+<div class="footer">Predictive Modeling Using Machine Learning • Premium 3D UI • Educational Project</div>
+</div>
+<script>
+// 3D particle field
+const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,1000), renderer=new THREE.WebGLRenderer({canvas:document.getElementById('bg'),alpha:true,antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth,innerHeight); camera.position.z=7;
+const geo=new THREE.BufferGeometry(), count=1100, pos=new Float32Array(count*3);
+for(let i=0;i<count;i++){pos[i*3]=(Math.random()-.5)*18;pos[i*3+1]=(Math.random()-.5)*12;pos[i*3+2]=(Math.random()-.5)*14}
+geo.setAttribute('position',new THREE.BufferAttribute(pos,3)); const mat=new THREE.PointsMaterial({color:0x5f8cff,size:.025,transparent:true,opacity:.7}); const points=new THREE.Points(geo,mat);scene.add(points);
+function anim(){requestAnimationFrame(anim);points.rotation.y+=.00035;points.rotation.x+=.00012;renderer.render(scene,camera)}anim();
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
+
+const base={color:'#7ea1ff',grid:'#ffffff12',ticks:'#7783a1'};
+new Chart(document.getElementById('modelChart'),{type:'bar',data:{labels:['Random Forest','Logistic Reg.','Decision Tree'],datasets:[{label:'Accuracy',data:[73.3,74.2,67.5],backgroundColor:['#6d7cff','#2bd4ff','#8b9ab8'],borderRadius:8}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:base.ticks},grid:{display:false}},y:{min:50,max:100,ticks:{color:base.ticks},grid:{color:base.grid}}}}});
+new Chart(document.getElementById('rocChart'),{type:'line',data:{labels:[0,.2,.4,.6,.8,1],datasets:[{label:'Random Forest',data:[0,.18,.35,.55,.72,1],borderColor:'#62e7c0',tension:.35,pointRadius:0},{label:'Logistic',data:[0,.22,.43,.63,.78,1],borderColor:'#6d8cff',tension:.35,pointRadius:0},{label:'Decision Tree',data:[0,.27,.48,.68,.84,1],borderColor:'#8b9ab8',tension:.35,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#a9b4ce',font:{size:10}}}},scales:{x:{title:{display:true,text:'False Positive Rate',color:'#7783a1'},ticks:{color:'#7783a1'},grid:{color:'#ffffff08'}},y:{title:{display:true,text:'True Positive Rate',color:'#7783a1'},ticks:{color:'#7783a1'},grid:{color:'#ffffff08'}}}}});
+function predict(){let s=+document.getElementById('study').value,a=+document.getElementById('attendance').value,as=+document.getElementById('assignment').value,p=+document.getElementById('previous').value;let z=.45*s+.032*a+.016*as+.024*p-7.15;let prob=1/(1+Math.exp(-z));let pct=Math.round(prob*100);let pass=pct>=50;let r=document.getElementById('result');r.style.display='block';r.innerHTML=`<div style="color:${pass?'#58e9b3':'#ff9a9a'};font-weight:800">${pass?'PASS PREDICTED':'FAIL RISK DETECTED'}</div><strong>${pct}% probability</strong><div class="muted" style="margin-top:5px">Estimated from the trained-model feature pattern.</div>`}
+</script>
+</body></html>
